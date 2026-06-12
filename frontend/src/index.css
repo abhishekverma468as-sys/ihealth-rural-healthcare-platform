@@ -1,0 +1,138 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Typography ─────────────────────────────────────────────────────────────── */
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: #F0FDFA;
+  color: #1a2e2b;
+}
+
+.dark body {
+  background-color: #0D1B2A;
+  color: #e2f0ee;
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+/* ── Scrollbar ──────────────────────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #0F766E55; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #0F766E; }
+
+/* ── Beating heart animation ────────────────────────────────────────────────── */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  14%       { transform: scale(1.2); }
+  28%       { transform: scale(1); }
+  42%       { transform: scale(1.15); }
+  70%       { transform: scale(1); }
+}
+.animate-heartbeat {
+  animation: heartbeat 1.2s ease-in-out infinite;
+}
+
+/* ── Emergency flash overlay ────────────────────────────────────────────────── */
+@keyframes emergency-pulse {
+  0%, 100% { background-color: rgba(220, 38, 38, 0.08); }
+  50%       { background-color: rgba(220, 38, 38, 0.18); }
+}
+.emergency-overlay {
+  animation: emergency-pulse 1s ease-in-out infinite;
+}
+
+/* ── Status glow effects ─────────────────────────────────────────────────────── */
+.glow-green  { box-shadow: 0 0 20px rgba(22, 163, 74, 0.25); }
+.glow-yellow { box-shadow: 0 0 20px rgba(217, 119, 6, 0.25); }
+.glow-red    { box-shadow: 0 0 24px rgba(220, 38, 38, 0.4); }
+.glow-teal   { box-shadow: 0 0 20px rgba(15, 118, 110, 0.25); }
+
+/* ── Card base ───────────────────────────────────────────────────────────────── */
+.card {
+  @apply bg-white dark:bg-card-dark rounded-2xl border border-border-light dark:border-border-dark shadow-sm;
+}
+
+/* ── Button variants ─────────────────────────────────────────────────────────── */
+.btn-primary {
+  @apply bg-primary hover:bg-primary-dark text-white font-semibold px-5 py-2.5 rounded-xl
+         transition-all duration-200 hover:shadow-glow-teal active:scale-95;
+}
+.btn-secondary {
+  @apply bg-primary-light dark:bg-primary/20 text-primary dark:text-primary-light font-semibold
+         px-5 py-2.5 rounded-xl border border-primary/30 hover:bg-primary/10
+         transition-all duration-200 active:scale-95;
+}
+.btn-danger {
+  @apply bg-emergency hover:bg-red-700 text-white font-semibold px-5 py-2.5 rounded-xl
+         transition-all duration-200 active:scale-95;
+}
+
+/* ── Status badge ─────────────────────────────────────────────────────────────── */
+.badge-green  { @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-green-100 text-green-700; }
+.badge-yellow { @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-amber-100 text-amber-700; }
+.badge-red    { @apply inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-red-100 text-red-700; }
+
+/* ── Input field ─────────────────────────────────────────────────────────────── */
+.input-field {
+  @apply w-full px-4 py-2.5 rounded-xl border border-border-light dark:border-border-dark
+         bg-white dark:bg-card-dark text-gray-800 dark:text-gray-100
+         focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary
+         transition-all duration-200 placeholder-gray-400;
+}
+
+/* ── Sidebar ─────────────────────────────────────────────────────────────────── */
+.sidebar-link {
+  @apply flex items-center gap-3 px-4 py-2.5 rounded-xl text-sm font-medium
+         text-gray-600 dark:text-gray-300 hover:bg-primary-light dark:hover:bg-primary/20
+         hover:text-primary transition-all duration-150;
+}
+.sidebar-link.active {
+  @apply bg-primary-light dark:bg-primary/20 text-primary font-semibold;
+}
+
+/* ── Loading skeleton ────────────────────────────────────────────────────────── */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+.skeleton {
+  background: linear-gradient(90deg, #e2e8f0 25%, #f0f4f8 50%, #e2e8f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+.dark .skeleton {
+  background: linear-gradient(90deg, #1e3448 25%, #243d52 50%, #1e3448 75%);
+  background-size: 200% 100%;
+}
+
+/* ── Page transition ─────────────────────────────────────────────────────────── */
+@keyframes slide-up {
+  0%   { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.page-enter {
+  animation: slide-up 0.35s ease-out both;
+}
+
+/* ── Pulsing red left border for Emergency queue cards ───────────────────────── */
+@keyframes border-pulse {
+  0%, 100% { border-left-color: #ef4444; box-shadow: -3px 0 12px rgba(239,68,68,0.4); }
+  50%       { border-left-color: #dc2626; box-shadow: -3px 0 24px rgba(220,38,38,0.7); }
+}
+.emergency-border {
+  animation: border-pulse 1.5s ease-in-out infinite;
+}
+
+/* ── Slide-down for newly arriving emergency queue items ─────────────────────── */
+@keyframes slide-down {
+  0%   { opacity: 0; transform: translateY(-16px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+.animate-slide-down {
+  animation: slide-down 0.3s ease-out both;
+}

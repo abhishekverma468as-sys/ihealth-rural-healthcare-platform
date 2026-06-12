@@ -1,0 +1,25 @@
+# Environment Variables
+.env
+.env.*
+
+# Node
+node_modules/
+dist/
+
+# Python
+venv/
+backend/venv/
+__pycache__/
+*.pyc
+
+# Django
+db.sqlite3
+
+# VS Code
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log

@@ -1,0 +1,15 @@
+{
+  "name": "ihealth-monorepo",
+  "version": "1.0.0",
+  "description": "Unified runner for iHealth Frontend and Backend",
+  "main": "index.js",
+  "scripts": {
+    "install-all": "npm install --prefix frontend",
+    "frontend": "npm run dev --prefix frontend",
+    "backend": "cd backend && source venv/bin/activate && python manage.py runserver",
+    "dev": "npx -y concurrently --kill-others \"npm run backend\" \"npm run frontend\""
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
